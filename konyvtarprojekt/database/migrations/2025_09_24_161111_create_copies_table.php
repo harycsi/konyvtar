@@ -15,18 +15,21 @@ return new class extends Migration
         Schema::create('copies', function (Blueprint $table) {
             $table->id();
             $table->foreignId("book_id")->constrained("books");
-            $table->foreignId("user_id")->constrained("users");
+            $table->boolean('hardcovered')->default(1); //0: keménykötés, 1: puhakötés
+            $table->year('publication');
+            $table->smallInteger('status')->default(0); //0: könyvtárba, 1: kikölcsönzött, 2: selejt
             $table->timestamps();
         });
 
         Copy::create([
             "book_id" => 1,
-            "user_id" => 2
+            "publication" => 1960
         ]);
 
          Copy::create([
             "book_id" => 2,
-            "user_id" => 2
+            "publication"  => 2022,
+            "status" => 2
         ]);
     }
 

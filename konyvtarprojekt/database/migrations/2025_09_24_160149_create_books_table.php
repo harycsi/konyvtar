@@ -16,20 +16,17 @@ return new class extends Migration
             $table->id();
             $table->string("author");
             $table->longText("title");
-            $table->integer("pieces");
             $table->timestamps();
         });
 
          Book::create([
             "author" => "William Shakespeare",
             "title" => "Romeo and Juliette",
-            "pieces" => 5
         ]);
 
         Book::create([
             "author" => "OSHO",
             "title" => "Tantra",
-            "pieces" => 2
         ]);
     }
 
